@@ -1,1 +1,23 @@
-<p>app-main-menu works!</p>
+<h1 class="grid mt-5 justify-content-center">
+  WHEEL TYPE OF FOOD
+</h1>
+<div class="grid mt-8 justify-content-center">
+  <ngx-wheel
+  #wheel
+  [width]="width"
+  [height]="height"
+  [spinDuration]='spinDuration'
+  [disableSpinOnClick]='true'
+  [items]='items'
+  [innerRadius]='50'
+  [spinAmount]='10'
+  [textOrientation]='textOrientation'
+  [textAlignment]='textAlignment'
+  pointerStrokeColor='red'
+  pointerFillColor='purple'
+  [idToLandOn]='idToLandOn'
+  (onSpinStart)='before()'
+  (onSpinComplete)='after()'
+  >
+  </ngx-wheel>
+</div>
