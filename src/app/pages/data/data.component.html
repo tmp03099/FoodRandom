@@ -1,0 +1,30 @@
+<div class="flex flex-column">
+    <div class="flex header-banner">
+        <img src="assets/background-img/banner-pages.jpg" style="width:100%;">
+    </div>
+    <div class="flex text-lg lg:text-5xl p-4 header-banner justify-content-center">
+        <span >FOOD DATA</span>
+    </div>
+    <div class="grid">
+        <div class="col-10 pl-8 list-container justify-content-center">
+            <p-accordion [multiple]="true">
+                <p-accordionTab header="Breakfast">
+                    <p>koko</p>
+                </p-accordionTab>
+                <p-accordionTab header="Meal">
+                    Content 2
+                </p-accordionTab>
+            </p-accordion>
+        </div>
+        <div class="col-2 menu-vertical">
+            <button pButton pRipple type="button" icon="pi pi-plus" class="p-button-rounded p-button-success" (click)="showAddFoodDialog()"></button>
+            <button pButton pRipple type="button" icon="pi pi-minus" class="p-button-rounded p-button-danger" (click)="showMinusFoodDialog()"></button>
+        </div>
+    </div>
+</div>
+<p-dialog header="Title" [(visible)]="addFoodDisplay">
+    <app-add-food></app-add-food>
+</p-dialog>
+<p-dialog header="Title" [(visible)]="minusFoodDisplay">
+    Content
+</p-dialog>

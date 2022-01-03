@@ -1,23 +1,37 @@
-<h1 class="grid mt-5 justify-content-center">
-  WHEEL TYPE OF FOOD
-</h1>
-<div class="grid mt-8 justify-content-center">
-  <ngx-wheel
-  #wheel
-  [width]="width"
-  [height]="height"
-  [spinDuration]='spinDuration'
-  [disableSpinOnClick]='true'
-  [items]='items'
-  [innerRadius]='50'
-  [spinAmount]='10'
-  [textOrientation]='textOrientation'
-  [textAlignment]='textAlignment'
-  pointerStrokeColor='red'
-  pointerFillColor='purple'
-  [idToLandOn]='idToLandOn'
-  (onSpinStart)='before()'
-  (onSpinComplete)='after()'
-  >
-  </ngx-wheel>
+<div class="flex flex-column app-main">
+  <div class="flex flex-column text-2xl md:text-6xl font-medium  mt-5 align-items-center justify-content-center">
+    <div>WHEEL TYPE OF FOOD</div>
+    <div class="flex mt-2 button-style">
+      <button pButton pRipple type="button" label="Spin" class="p-button-raised p-button-success" (click)="handlethis($event)"></button>
+    </div>
+  </div>
+  <div class="flex header-main mt-5 justify-content-center">
+    <div class="flex mt-5 justify-content-center">
+      <ngx-wheel
+      #wheel
+      [width]='500'
+      [height]='500'
+      [spinDuration]='spinDuration' 
+      [disableSpinOnClick]='true'
+      [items]='items'
+      [innerRadius]='50'
+      [spinAmount]='10'
+      [textOrientation]='textOrientation'
+      [textAlignment]='textAlignment'
+      pointerStrokeColor='red'
+      pointerFillColor='purple'
+      [idToLandOn]='idToLandOn'
+      (onSpinStart)='before()'
+      (onSpinComplete)='after()'
+      
+      >
+      </ngx-wheel>
+    </div>
+  </div>
 </div>
+<p-dialog [(visible)]="display" [style]="{width: '20rem' , height:'10rem'}">
+  <div class="text:2xl md:text-5xl justify-items-center">{{selectedFood}}</div>
+  <ng-template pTemplate="footer">
+      <p-button icon="pi pi-check" (click)="display=false" label="Ok" styleClass="p-button-text"></p-button>
+  </ng-template>
+</p-dialog>

@@ -15,16 +15,16 @@ export class AppHeaderComponent implements OnInit {
   ngOnInit(): void {
    this.menuBar = [
      {
-       label:'Home',
-       icon: 'fas fa-home'
+       label:'Home', routerLink: 'home',
+       icon: 'pi pi-home'
      },
      {
-      label: 'Data',
-      icon: 'fas fa-database'
+      label: 'Food',
+      icon: 'pi pi-star'
      },
      {
-      label: 'Random',
-      icon: 'fas fa-dice'
+      label: 'Data', routerLink: 'data',
+      icon: 'pi pi-file'
      }
 
    ]

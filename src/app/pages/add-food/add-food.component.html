@@ -1,0 +1,26 @@
+<p-toast></p-toast>
+<div class="flex flex-column">
+    <div class="flex pb-3 justify-content-center"> 
+        <p-dropdown [options]="type" [(ngModel)]="selectedType" placeholder="Select a Type" optionLabel="name" [showClear]="true"></p-dropdown>
+    </div>
+    <div class="flex pb-3 flex-column">
+        <div class="flex font-semibold pb-1">
+            <span class="text:sm lg:text-lg">Recipe</span>
+        </div>
+        <div class="flex">
+            <textarea rows="5" cols="60" pInputTextarea autoResize="autoResize"></textarea>
+        </div>
+    </div>
+    <div class="flex">
+        <p-fileUpload name="demo[]" url="./upload.php" (onUpload)="onUpload($event)"
+        [multiple]=false accept="image/*" [maxFileSize]=100>
+        <ng-template pTemplate="content">
+            <ul *ngIf="uploadedFiles.length">
+                <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+            </ul>
+        </ng-template>
+        </p-fileUpload>
+    </div>
+</div>
+
+
