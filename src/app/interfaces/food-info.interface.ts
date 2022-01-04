@@ -3,4 +3,5 @@ export interface FoodInfoInterface{
     img: string;
     link?: string;
     other: string;
+    type: string;
 }

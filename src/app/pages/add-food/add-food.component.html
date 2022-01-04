@@ -8,18 +8,21 @@
             <span class="text:sm lg:text-lg">Recipe</span>
         </div>
         <div class="flex">
-            <textarea rows="5" cols="60" pInputTextarea autoResize="autoResize"></textarea>
+            <textarea rows="5" cols="60" pInputTextarea autoResize="autoResize" [(ngModel)]="selectedRecipe"></textarea>
         </div>
     </div>
     <div class="flex">
         <p-fileUpload name="demo[]" url="./upload.php" (onUpload)="onUpload($event)"
-        [multiple]=false accept="image/*" [maxFileSize]=100>
+        [multiple]=false accept="image/*" [maxFileSize]=1000000>
         <ng-template pTemplate="content">
             <ul *ngIf="uploadedFiles.length">
                 <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
             </ul>
         </ng-template>
         </p-fileUpload>
+    </div>
+    <div class="flex">
+        <button pButton pRipple type="button" label="Save" class="p-button-raised p-button-info" (click)="onClickAction($event)"></button>
     </div>
 </div>
 
