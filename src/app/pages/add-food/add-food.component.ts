@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
+import { FoodInfoInterface } from 'src/app/interfaces/food-info.interface';
 import { FoodType } from 'src/app/interfaces/food-type.interface';
 import { FoodInventoryService } from 'src/app/services/food.service';
 
@@ -13,7 +14,7 @@ import { FoodInventoryService } from 'src/app/services/food.service';
 })
 export class AddFoodComponent implements OnInit {
 
-  public type: FoodType[] = [];
+  public foodType: FoodType[];
 
   public selectedType: FoodType ;
 
@@ -21,13 +22,17 @@ export class AddFoodComponent implements OnInit {
 
   public selectedRecipe: string;
 
+  public selectedName: string;
+
+  public breakfasts: string[] = [];
+
   constructor(
     private readonly messageService: MessageService,
     private readonly foodService: FoodInventoryService
     ) {   //it run first, when need to set up a value or run relevant codes
     
     //type of food
-    this.type = [
+    this.foodType = [
       {name: 'Breakfast' , code: 'BF'},
       {name: 'Meal' , code: 'M'}
     ]
@@ -40,13 +45,18 @@ export class AddFoodComponent implements OnInit {
     this.messageService.add({severity: 'info', summary: 'File Uploaded', detail: ''});
   }
 
-  public async onClickAction(event: Event){ 
+  public onClickAction(event: Event){ 
     console.log("save", event)
     console.log(this.selectedRecipe);
+    console.log(this.selectedName);
     console.log(this.selectedType.name);
-    // var getObject: FoodInventoryService = {name: "a", img:"a", other:"", type: this.type};
-    // this.foodService.addNewFood(getObject);
+    console.log(this.uploadedFiles);
+    var getObject: FoodInfoInterface = {type: this.selectedType.name, name: this.selectedName, other: this.selectedRecipe};
+    this.foodService.addNewFood(getObject);
+    
   }
+
+
 
   ngOnInit(): void {
 

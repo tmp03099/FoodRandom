@@ -9,13 +9,14 @@ export class FoodInventoryService {
 
 
   constructor() { //code auto run when create a class
-      this.foodInventory.push({name: "beef", img: "", other:"beef info", type: "breakfast"}); //add element into array foodInventory
-      this.foodInventory.push({name: "pork", img: "", other:"pork info" , type: "breakfast"});
-      this.foodInventory.push({name: "chicken", img: "", other:"chicken info" , type: "breakfast"});
-      this.foodInventory.push({name: "lamb", img: "", other:"lamb info", type: "breakfast"});
-      this.foodInventory.push({name: "crab", img: "", other:"crab info", type: "breakfast"});
-      this.foodInventory.push({name: "octopus", img: "", other:"octopus info", type: "breakfast"});
-      this.foodInventory.push({name: "nail", img: "", other:"nail info", type: "breakfast"});
+      this.foodInventory.push({type: 'FoodType', name: "beef", other:"beef info" }); //add element into array foodInventory
+      this.foodInventory.push({type: "ll", name: "beef", other:"beef info" });
+      this.foodInventory.push({type: "uu", name: "beef", other:"beef info" });
+      this.foodInventory.push({type: "tt", name: "beef", other:"beef info" });
+      this.foodInventory.push({type: "yy", name: "beef", other:"beef info" });
+      this.foodInventory.push({type: "ee", name: "beef", other:"beef info" });
+      this.foodInventory.push({type: "nn", name: "beef", other:"beef info" });
+      this.foodInventory.push({type: "oo", name: "beef", other:"beef info" });
   }
 
   // get a name into array
@@ -30,8 +31,33 @@ export class FoodInventoryService {
   }
 
   public addNewFood(newFood: FoodInfoInterface)  { // type of FoodInfoInterface bc input need to match with element into array . function no return, don't need output type
-    console.log("A")
+    console.log(this.addNewFood)
     this.foodInventory.push(newFood);//bc newFood had FoodInfoInterface type, so just add variable of this type.
+
   } 
+
+  public getBreakfasts(): string [] {
+    const breakfastsList: string [] = [];
+
+    this.foodInventory.forEach(food => {
+      if (food.type == "Breakfast"){
+        breakfastsList.push(food.name);
+      }
+    });
+
+    return breakfastsList;
+  }
+
+  public getMeals(): string [] {
+    const mealsList: string [] = [];
+
+    this.foodInventory.forEach(food => {
+      if (food.type == "Meal"){
+        mealsList.push(food.name);
+      }
+    });
+
+    return mealsList;
+  }
   
 }
