@@ -1,8 +1,13 @@
-<div class="flex flex-column app-main">
+<div class="flex flex-column app-main align-items-center">
   <div class="flex flex-column text-2xl md:text-6xl font-medium  mt-5 align-items-center justify-content-center">
     <div>WHEEL TYPE OF FOOD</div>
-    <div class="flex mt-2 button-style">
-      <button pButton pRipple type="button" label="Spin" class="p-button-raised p-button-success" (click)="handlethis($event)"></button>
+    <div class="flex button-menu">
+      <div class="b-button">
+        <button pButton pRipple type="button" label="Breakfast" class="p-button-secondary" (click)="breakfastWheel($event)"></button>
+      </div>
+      <div class="m-button">
+        <button pButton pRipple type="button" label="Meal" class="p-button-secondary" (click)="mealWheel($event)"></button>
+      </div>
     </div>
   </div>
   <div class="flex header-main mt-5 justify-content-center">
@@ -23,10 +28,12 @@
       [idToLandOn]='idToLandOn'
       (onSpinStart)='before()'
       (onSpinComplete)='after()'
-      
       >
       </ngx-wheel>
     </div>
+  </div>
+  <div class="flex mt-2 button-style">
+    <button pButton pRipple type="button" label="Spin" class="p-button-raised p-button-success" (click)="handlethis($event)"></button>
   </div>
 </div>
 <p-dialog [(visible)]="display" [style]="{width: '20rem' , height:'10rem'}">

@@ -9,25 +9,39 @@ export class FoodInventoryService {
 
 
   constructor() { //code auto run when create a class
-      this.foodInventory.push({type: 'FoodType', name: "beef", other:"beef info" }); //add element into array foodInventory
-      this.foodInventory.push({type: "ll", name: "beef", other:"beef info" });
-      this.foodInventory.push({type: "uu", name: "beef", other:"beef info" });
-      this.foodInventory.push({type: "tt", name: "beef", other:"beef info" });
-      this.foodInventory.push({type: "yy", name: "beef", other:"beef info" });
-      this.foodInventory.push({type: "ee", name: "beef", other:"beef info" });
-      this.foodInventory.push({type: "nn", name: "beef", other:"beef info" });
-      this.foodInventory.push({type: "oo", name: "beef", other:"beef info" });
+      this.foodInventory.push({type: 'breakfast', name: "egg", other:"beef info" }); //add element into array foodInventory
+      this.foodInventory.push({type: "meal", name: "beef", other:"beef info" });
+      this.foodInventory.push({type: "meal", name: "pork", other:"beef info" });
+      this.foodInventory.push({type: "breakfast", name: "milk", other:"beef info" });
+      this.foodInventory.push({type: "breakfast", name: "oatmilk", other:"beef info" });
+      this.foodInventory.push({type: "meal", name: "lamp", other:"beef info" });
+    
   }
 
   // get a name into array
-  public getFoodInventory(): string[] {
-    const foodList: string[] = []; //create a variable
+  public getBreakfastInventory(): string[] {
+    const breakfastList: string[] = []; //create a variable
 
     this.foodInventory.forEach(food => {  //loop all element into array
-      foodList.push(food.name);
+      if (food.type === "breakfast"){
+        breakfastList.push(food.name);
+      }
     });
 
-    return foodList;
+    return breakfastList;
+  }
+
+  public getMealInventory(): string[] {
+    const mealList: string[] = []; //create a variable
+
+    this.foodInventory.forEach(food => {  //loop all element into array
+      if(food.type === "meal"){
+        mealList.push(food.name);
+      }
+      
+    });
+
+    return mealList;
   }
 
   public addNewFood(newFood: FoodInfoInterface)  { // type of FoodInfoInterface bc input need to match with element into array . function no return, don't need output type

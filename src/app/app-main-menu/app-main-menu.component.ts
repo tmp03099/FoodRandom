@@ -12,40 +12,23 @@ export class AppMainMenuComponent implements OnInit, AfterViewInit {
   @ViewChild("wheel") 
   public wheel: NgxWheelComponent|undefined;
 
-
   public spinDuration = 8;
 
   public textAlignment: TextAlignment = TextAlignment.CENTER;
   public textOrientation: TextOrientation = TextOrientation.HORIZONTAL;
   public idToLandOn;
   
-  // public items: Item[] = [
-  //   {fillStyle : '#eae56f', text : 'Japanese', id: 1},
-  //   {fillStyle : '#89f26e', text : 'Korean', id: 2},
-  //   {fillStyle : '#7de6ef', text : 'American', id: 3},
-  //   {fillStyle : '#e7706f', text : 'Mexican', id: 4},
-  //   {fillStyle : '#f38ec0', text : 'Italian', id: 5},
-  //   {fillStyle : '#76db9b', text : 'Chinese', id: 6},
-  //   {fillStyle : '#188a42', text : 'Vietnamses', id: 7},
-  //   {fillStyle : '#f38ec0', text : 'Indian', id: 8},
-  //   {fillStyle : '#036475', text : 'Thai', id: 9}
-  // ]
-
-  public items: Item[] = []
+  public items: Item[] = [];
 
   public selectedFood: string|undefined;
   public display: boolean = false;
   public food: string[] = [];
 
   ngAfterViewInit(){
-    // console.log('only after this event "wheel" is usable!')
-    
-    // console.log(this.wheel);
-
-    // this.wheel?.spin();
+  
   }
 
-  reset(){
+  public reset(){
     this.wheel?.reset();
   }
 
@@ -56,7 +39,7 @@ export class AppMainMenuComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.food = this.foodInventoryService.getFoodInventory();
+    this.food = this.foodInventoryService.getBreakfastInventory();
     console.log(this.food);
 
     //for each element in array
@@ -89,6 +72,34 @@ export class AppMainMenuComponent implements OnInit, AfterViewInit {
     await new Promise(resolve => setTimeout(resolve, 0));
     this.wheel?.spin();
   }
+
+  // get breakfast wheel
+  public breakfastWheel(event: Event){
+    
+    this.food = this.foodInventoryService.getBreakfastInventory();
+    const newList: Item[] = [];
+    this.food.forEach((food,index) => {
+      newList.push({fillStyle : this.getRandomColor() , text : food , id: index});
+    });
+   
+    this.items = newList;
+    this.reset();
+  }
+
+  // get meal wheel
+  public mealWheel(event: Event){
+    this.food = this.foodInventoryService.getMealInventory();
+    const newList: Item[] = [];
+    this.food.forEach((food,index) => {
+      newList.push({fillStyle : this.getRandomColor() , text : food , id: index});
+    });
+    
+    this.items = newList;
+    this.reset();
+  }
+
+
+
 
   // create function for random and with input two number and return number type
   public getRandomInt(min: number, max: number) : number{  

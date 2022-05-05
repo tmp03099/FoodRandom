@@ -23,8 +23,6 @@ export class DataComponent implements OnInit {
   }
 
 
-
-  
   constructor(
     private readonly listService : FoodInventoryService
   ) { }
