@@ -22,7 +22,7 @@
         </div>
     </div>
 </div>
-<p-dialog header="Title" [(visible)]="addFoodDisplay">
+<p-dialog header="Title" [(visible)]="addFoodDisplay" (onHide)="updateListFood()">
     <app-add-food></app-add-food>
 </p-dialog>
 <p-dialog header="Title" [(visible)]="minusFoodDisplay">

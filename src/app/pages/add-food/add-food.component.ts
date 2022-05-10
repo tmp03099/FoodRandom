@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { FoodInfoInterface } from 'src/app/interfaces/food-info.interface';
 import { FoodType } from 'src/app/interfaces/food-type.interface';
@@ -12,6 +12,7 @@ import { FoodInventoryService } from 'src/app/services/food.service';
   styleUrls: ['./add-food.component.scss'],
   providers: []
 })
+
 export class AddFoodComponent implements OnInit {
 
   public foodType: FoodType[];
@@ -20,15 +21,15 @@ export class AddFoodComponent implements OnInit {
 
   public uploadedFiles: any[] = [];
 
-  public selectedRecipe: string;
+  public selectedRecipe: string = "";
 
-  public selectedName: string;
+  public selectedName: string = "";
 
   public breakfasts: string[] = [];
 
   constructor(
     private readonly messageService: MessageService,
-    private readonly foodService: FoodInventoryService
+    private readonly foodIntService: FoodInventoryService
     ) {   //it run first, when need to set up a value or run relevant codes
     
     //type of food
@@ -40,26 +41,24 @@ export class AddFoodComponent implements OnInit {
 
   onUpload(event: any){
     for(let file of event.files) {
+      
       this.uploadedFiles.push(file); 
     }
-    this.messageService.add({severity: 'info', summary: 'File Uploaded', detail: ''});
+    this.messageService.add({severity: 'info', detail: ''});
   }
+
+
 
   public onClickAction(event: Event){ 
-    console.log("save", event)
-    console.log(this.selectedRecipe);
-    console.log(this.selectedName);
-    console.log(this.selectedType.name);
-    console.log(this.uploadedFiles);
-    var getObject: FoodInfoInterface = {type: this.selectedType.name, name: this.selectedName, other: this.selectedRecipe};
-    this.foodService.addNewFood(getObject);
-    
+
+    var getObject: FoodInfoInterface = {type: this.selectedType.name, name: this.selectedName, other: this.selectedRecipe}; //hold infomation get from user input
+    this.foodIntService.addNewFood(getObject); // call function addNewFood with input getObject to add new item food in food inventory service. 
+
   }
-
-
 
   ngOnInit(): void {
 
   }
+
 
 }

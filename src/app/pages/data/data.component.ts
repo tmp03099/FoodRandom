@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 import { FoodInventoryService } from 'src/app/services/food.service';
 
 @Component({
@@ -6,6 +6,8 @@ import { FoodInventoryService } from 'src/app/services/food.service';
   templateUrl: './data.component.html',
   styleUrls: ['./data.component.scss']
 })
+
+
 export class DataComponent implements OnInit {
 
 
@@ -28,10 +30,14 @@ export class DataComponent implements OnInit {
   ) { }
  
   ngOnInit(): void {
-    
-    this.breakfastDetail = this.listService.getBreakfasts();
-    this.mealDetail = this.listService.getMeals();
+    this.breakfastDetail = this.listService.getBreakfastInventory(); //assign variable to hold return value of function
+    this.mealDetail = this.listService.getMealInventory();
+  }
 
+  updateListFood(){
+    this.breakfastDetail = this.listService.getBreakfastInventory(); 
+    console.log(this.breakfastDetail);
+    this.mealDetail = this.listService.getMealInventory();
   }
 
   
