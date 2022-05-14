@@ -9,16 +9,32 @@
         <div class="col-10 pl-8 list-container justify-content-center">
             <p-accordion [multiple]="true">
                 <p-accordionTab header="Breakfast">
-                    <div *ngFor="let name of breakfastDetail">{{name}}</div>
+                    <div *ngFor="let name of breakfastDetail" class="row-detail">
+                        {{name}}
+                        <button pButton pRipple type="button" 
+                                                icon="pi pi-minus" 
+                                                style="width:23px; height:3px; float:right;" 
+                                                class="p-button-rounded p-button-danger" 
+                                                (click)="deleteListFood(name)">
+                        </button>
+                    </div>
                 </p-accordionTab>
                 <p-accordionTab header="Meal">
-                    <div *ngFor="let name of mealDetail ">{{name}}</div>
+                    <div *ngFor="let name of mealDetail" class="row-detail">
+                        {{name}}
+                        <button pButton pRipple type="button" 
+                                                icon="pi pi-minus" 
+                                                style="width:23px; height:3px; float:right;" 
+                                                class="p-button-rounded p-button-danger" 
+                                                (click)="deleteListFood(name)">
+                        </button>
+                    </div>
                 </p-accordionTab>
             </p-accordion>
         </div>
         <div class="col-2 menu-vertical">
             <button pButton pRipple type="button" icon="pi pi-plus" class="p-button-rounded p-button-success" (click)="showAddFoodDialog()"></button>
-            <button pButton pRipple type="button" icon="pi pi-minus" class="p-button-rounded p-button-danger" (click)="showMinusFoodDialog()"></button>
+            <!-- <button pButton pRipple type="button" icon="pi pi-minus" class="p-button-rounded p-button-danger" (click)="showMinusFoodDialog()"></button> -->
         </div>
     </div>
 </div>
@@ -26,5 +42,5 @@
     <app-add-food></app-add-food>
 </p-dialog>
 <p-dialog header="Title" [(visible)]="minusFoodDisplay">
-    Content
+    
 </p-dialog>

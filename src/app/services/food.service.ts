@@ -9,12 +9,12 @@ export class FoodInventoryService {
 
 
   constructor() { //code auto run when create a class
-      this.foodInventory.push({type: 'Breakfast', name: "egg", other:"beef info" }); //add element into array foodInventory
-      this.foodInventory.push({type: "Meal", name: "beef", other:"beef info" });
-      this.foodInventory.push({type: "Meal", name: "pork", other:"beef info" });
-      this.foodInventory.push({type: "Breakfast", name: "milk", other:"beef info" });
-      this.foodInventory.push({type: "Breakfast", name: "oatmilk", other:"beef info" });
-      this.foodInventory.push({type: "Meal", name: "lamp", other:"beef info" });
+      this.foodInventory.push({id:1, type: 'Breakfast', name: "egg", other:"beef info" }); //add element into array foodInventory
+      this.foodInventory.push({id:2, type: "Meal", name: "beef", other:"beef info" });
+      this.foodInventory.push({id:3, type: "Meal", name: "pork", other:"beef info" });
+      this.foodInventory.push({id:4, type: "Breakfast", name: "milk", other:"beef info" });
+      this.foodInventory.push({id:5, type: "Breakfast", name: "oatmilk", other:"beef info" });
+      this.foodInventory.push({id:6, type: "Meal", name: "lamp", other:"beef info" });
     
   }
 
@@ -50,6 +50,25 @@ export class FoodInventoryService {
       console.log(this.foodInventory);
 
   }
+
+  
+
+
+  //Function subtract item from food inventory 
+  public deleteFood(newFood: string){ //just have name so defined string
+    const index = this.foodInventory.findIndex((food) => food.name === newFood);
+    console.log(index);
+    console.log(this.foodInventory);
+
+    if (index !== -1){
+      this.foodInventory.splice(index, 1);
+    }
+    console.log(newFood);
+
+  }
+  
+
+
 
 
 

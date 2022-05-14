@@ -15,6 +15,7 @@ export class DataComponent implements OnInit {
   public minusFoodDisplay: boolean = false;
   public breakfastDetail: string[];
   public mealDetail: string[];
+  public remainList: string;
 
   showAddFoodDialog() {
       this.addFoodDisplay = true;
@@ -32,12 +33,18 @@ export class DataComponent implements OnInit {
   ngOnInit(): void {
     this.breakfastDetail = this.listService.getBreakfastInventory(); //assign variable to hold return value of function
     this.mealDetail = this.listService.getMealInventory();
+    
   }
-
+  
   updateListFood(){
     this.breakfastDetail = this.listService.getBreakfastInventory(); 
-    console.log(this.breakfastDetail);
     this.mealDetail = this.listService.getMealInventory();
+    
+  }
+  
+  deleteListFood(name: string){
+    this.listService.deleteFood(name);
+    this.updateListFood();
   }
 
   
