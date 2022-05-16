@@ -10,7 +10,11 @@
             <p-accordion [multiple]="true">
                 <p-accordionTab header="Breakfast">
                     <div *ngFor="let name of breakfastDetail" class="row-detail">
-                        {{name}}
+                        <button pButton pRipple type="button"
+                                                class="p-button-secondary p-button-text"
+                                                (click)="showDetailDialog()">
+                            {{name}}
+                        </button>
                         <button pButton pRipple type="button" 
                                                 icon="pi pi-minus" 
                                                 style="width:23px; height:3px; float:right;" 
@@ -21,7 +25,11 @@
                 </p-accordionTab>
                 <p-accordionTab header="Meal">
                     <div *ngFor="let name of mealDetail" class="row-detail">
-                        {{name}}
+                        <button pButton pRipple type="button"
+                                                class="p-button-secondary p-button-text"
+                                                (click)="showDetailDialog()">
+                            {{name}}
+                        </button>
                         <button pButton pRipple type="button" 
                                                 icon="pi pi-minus" 
                                                 style="width:23px; height:3px; float:right;" 
@@ -38,9 +46,9 @@
         </div>
     </div>
 </div>
-<p-dialog header="Title" [(visible)]="addFoodDisplay" (onHide)="updateListFood()">
+<p-dialog header="Add Food" [(visible)]="addFoodDisplay" (onHide)="updateListFood()">
     <app-add-food></app-add-food>
 </p-dialog>
-<p-dialog header="Title" [(visible)]="minusFoodDisplay">
-    
+<p-dialog [(visible)]="displayDetailFood">
+    <app-show-detail-food></app-show-detail-food>
 </p-dialog>

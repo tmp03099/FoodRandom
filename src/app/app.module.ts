@@ -22,6 +22,8 @@ import {FileUploadModule} from 'primeng/fileupload';
 import {HttpClientModule} from '@angular/common/http';
 import {ToastModule} from 'primeng/toast';
 import { MessageService } from 'primeng/api';
+import { ShowDetailFoodComponent } from './pages/show-detail-food/show-detail-food.component';
+
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { MessageService } from 'primeng/api';
     AppHeaderComponent,
     AppFooterComponent,
     DataComponent,
-    AddFoodComponent
+    AddFoodComponent,
+    ShowDetailFoodComponent
   ],
   imports: [
     BrowserModule,

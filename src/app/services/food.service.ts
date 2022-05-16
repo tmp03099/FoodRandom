@@ -52,13 +52,10 @@ export class FoodInventoryService {
   }
 
   
-
-
   //Function subtract item from food inventory 
   public deleteFood(newFood: string){ //just have name so defined string
     const index = this.foodInventory.findIndex((food) => food.name === newFood);
-    console.log(index);
-    console.log(this.foodInventory);
+    
 
     if (index !== -1){
       this.foodInventory.splice(index, 1);
@@ -66,10 +63,16 @@ export class FoodInventoryService {
     console.log(newFood);
 
   }
+
+  // Function show detail information
+  public detailDisplay(detailFood: FoodInfoInterface){
+    const index = this.foodInventory.findIndex((obj:any) =>  {return obj.name === detailFood});
+    console.log(index);
+    console.log(this.foodInventory);
+  }
+
+
   
-
-
-
 
 
 

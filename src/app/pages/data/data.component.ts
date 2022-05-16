@@ -1,5 +1,7 @@
 import { Component, OnInit, Input} from '@angular/core';
 import { FoodInventoryService } from 'src/app/services/food.service';
+import { FoodInfoInterface } from 'src/app/interfaces/food-info.interface';
+
 
 @Component({
   selector: 'app-data',
@@ -11,20 +13,23 @@ import { FoodInventoryService } from 'src/app/services/food.service';
 export class DataComponent implements OnInit {
 
 
-  public addFoodDisplay: boolean = true;
-  public minusFoodDisplay: boolean = false;
+  public addFoodDisplay: boolean = false;
   public breakfastDetail: string[];
   public mealDetail: string[];
   public remainList: string;
+  public displayDetailFood: boolean = false;
 
-  showAddFoodDialog() {
-      this.addFoodDisplay = true;
-  }
 
-  showMinusFoodDialog() {
-    this.minusFoodDisplay = true;
-  }
 
+  public selectedId: number;
+
+  public uploadedFiles: any[] = [];
+
+  public selectedRecipe: string = "";
+
+  public selectedName: string = "";
+
+  
 
   constructor(
     private readonly listService : FoodInventoryService
@@ -42,11 +47,19 @@ export class DataComponent implements OnInit {
     
   }
   
+  
+  
   deleteListFood(name: string){
     this.listService.deleteFood(name);
     this.updateListFood();
   }
 
-  
+  showAddFoodDialog() {
+    this.addFoodDisplay = true;
+ }
+
+  showDetailDialog(){
+    this.displayDetailFood = true; 
+  }
 
 }
