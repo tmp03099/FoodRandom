@@ -65,10 +65,12 @@ export class FoodInventoryService {
   }
 
   // Function show detail information
-  public detailDisplay(detailFood: FoodInfoInterface){
-    const index = this.foodInventory.findIndex((obj:any) =>  {return obj.name === detailFood});
+  public detailDisplay(detailFood: string): FoodInfoInterface{
+    const index = this.foodInventory.findIndex((obj) =>  obj.name === detailFood);
     console.log(index);
-    console.log(this.foodInventory);
+  
+    return this.foodInventory[index];
+    
   }
 
 

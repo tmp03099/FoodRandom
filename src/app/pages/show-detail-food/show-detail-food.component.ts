@@ -1,8 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FoodType } from 'src/app/interfaces/food-type.interface';
-import { FoodInventoryService } from 'src/app/services/food.service';
+import { Component, Input, OnInit } from '@angular/core';
 import { FoodInfoInterface } from 'src/app/interfaces/food-info.interface';
-
 
 
 
@@ -14,27 +11,18 @@ import { FoodInfoInterface } from 'src/app/interfaces/food-info.interface';
 })
 export class ShowDetailFoodComponent implements OnInit {
 
-  listInventory: FoodInventoryService;
-  selectedList?: FoodInfoInterface;
+  @Input() foodDetail: FoodInfoInterface;
 
 
-
-
-
-
-  constructor(
-    private readonly listService: FoodInventoryService
-    
-  ) {}
+  constructor() {}
 
   ngOnInit(): void {
-    
+   this.foodDetail = {id: 1, type: "breakfast", name:"milk", other:"explain"}; //initialize set value 
 
   }
+  
 
-  onSelect(detail: FoodInfoInterface){
-    this.selectedList =  detail
-  }
+ 
 
 
 

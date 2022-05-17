@@ -12,7 +12,7 @@
                     <div *ngFor="let name of breakfastDetail" class="row-detail">
                         <button pButton pRipple type="button"
                                                 class="p-button-secondary p-button-text"
-                                                (click)="showDetailDialog()">
+                                                (click)="showDetailDialog(name)">
                             {{name}}
                         </button>
                         <button pButton pRipple type="button" 
@@ -27,7 +27,7 @@
                     <div *ngFor="let name of mealDetail" class="row-detail">
                         <button pButton pRipple type="button"
                                                 class="p-button-secondary p-button-text"
-                                                (click)="showDetailDialog()">
+                                                (click)="showDetailDialog(name)">
                             {{name}}
                         </button>
                         <button pButton pRipple type="button" 
@@ -50,5 +50,5 @@
     <app-add-food></app-add-food>
 </p-dialog>
 <p-dialog [(visible)]="displayDetailFood">
-    <app-show-detail-food></app-show-detail-food>
+    <app-show-detail-food [foodDetail]="getDetail"></app-show-detail-food>
 </p-dialog>

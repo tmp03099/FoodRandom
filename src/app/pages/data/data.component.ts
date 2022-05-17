@@ -18,18 +18,8 @@ export class DataComponent implements OnInit {
   public mealDetail: string[];
   public remainList: string;
   public displayDetailFood: boolean = false;
+  public getDetail: FoodInfoInterface;
 
-
-
-  public selectedId: number;
-
-  public uploadedFiles: any[] = [];
-
-  public selectedRecipe: string = "";
-
-  public selectedName: string = "";
-
-  
 
   constructor(
     private readonly listService : FoodInventoryService
@@ -58,8 +48,11 @@ export class DataComponent implements OnInit {
     this.addFoodDisplay = true;
  }
 
-  showDetailDialog(){
-    this.displayDetailFood = true; 
+  showDetailDialog(name: string){
+    this.displayDetailFood = true;
+    this.getDetail = this.listService.detailDisplay(name); 
   }
+
+
 
 }
