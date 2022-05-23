@@ -11,7 +11,7 @@ import { FoodInfoInterface } from 'src/app/interfaces/food-info.interface';
 })
 export class ShowDetailFoodComponent implements OnInit {
 
-  @Input() foodDetail: FoodInfoInterface;
+  @Input() foodDetail: FoodInfoInterface;  
 
 
   constructor() {}

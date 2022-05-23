@@ -1,3 +1,5 @@
+//Mobile first
+
 :host ::ng-deep .p-dialog .p-dialog-content{
     background: rgb(255, 222, 113);
     color: rgb(44, 43, 43);
@@ -16,3 +18,22 @@
 .fit-content{
     width:fit-content;
 }
+
+:host ::ng-deep ngx-wheel #canvas{
+    width:100% !important;
+}
+
+.button-menu{
+    margin: 0 10px 0 10px;
+}
+
+
+//large screen
+@media (min-width:765px){
+    .button-menu{
+        font-size: 20px;
+    }
+}
+
+
+
