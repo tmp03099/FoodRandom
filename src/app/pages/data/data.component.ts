@@ -34,7 +34,6 @@ export class DataComponent implements OnInit {
   updateListFood(){
     this.breakfastDetail = this.listService.getBreakfastInventory(); 
     this.mealDetail = this.listService.getMealInventory();
-    
   }
   
   
@@ -52,7 +51,4 @@ export class DataComponent implements OnInit {
     this.displayDetailFood = true;
     this.getDetail = this.listService.detailDisplay(name); 
   }
-
-
-
 }

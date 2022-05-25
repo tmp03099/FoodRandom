@@ -7,6 +7,8 @@ import { DataComponent } from '../data/data.component';
 
 
 
+
+
 @Component({
   selector: 'app-add-food',
   templateUrl: './add-food.component.html',
@@ -30,10 +32,14 @@ export class AddFoodComponent implements OnInit {
 
   public breakfasts: string[] = [];
 
+
+
   constructor(
     private readonly messageService: MessageService,
     private readonly foodIntService: FoodInventoryService,
     private readonly dataComponent: DataComponent
+    
+    
     ) {   //it run first, when need to set up a value or run relevant codes
     
     //type of food
@@ -55,15 +61,20 @@ export class AddFoodComponent implements OnInit {
 
   public onClickAction(event: Event){ 
 
-    var getObject: FoodInfoInterface = {id: this.selectedId, type: this.selectedType.name, name: this.selectedName, other: this.selectedRecipe}; //hold infomation get from user input
+    var getObject: FoodInfoInterface = {type: this.selectedType.name, name: this.selectedName, other: this.selectedRecipe}; //hold infomation get from user input
     this.foodIntService.addNewFood(getObject); // call function addNewFood with input getObject to add new item food in food inventory service. 
     this.dataComponent.updateListFood();
+    this.foodIntService.setStorage();//
     this.dataComponent.addFoodDisplay = false;
+  } 
 
-  }
+
+
+
 
   ngOnInit(): void {
-
+    
+   
   }
 
 

@@ -1,16 +1,16 @@
 <div class="flex flex-column">
-    <h2>{{foodDetail.name}}</h2>
-    <div class="type">
-        <span class="head-title">Type</span>
+    <h1>{{foodDetail.name}}</h1>
+    <div class="flex type">
+        <span class="head-title text-lg md:text-xl font-semibold">Type</span>
         <p>{{foodDetail.type}}</p>
     </div>
-    <div class="food-img">
-        <span class="head-title">Image</span>
-        <p></p>
+    <div class="flex food-img">
+        <span class="head-title text-lg md:text-xl font-semibold">Image</span>
+        <p>{{foodDetail.img}}</p>
     </div>
-    <div class="describe">
-        <span class="head-title">Recipe</span>
-        <p></p>
+    <div class="flex describe">
+        <span class="head-title text-lg md:text-xl font-semibold">Recipe</span>
+        <p>{{foodDetail.other}}</p>
     </div>
     <div class="button-submit">
         <button pButton pRipple type="button" label="Edit" class="p-button-outlined p-button-danger"></button>
