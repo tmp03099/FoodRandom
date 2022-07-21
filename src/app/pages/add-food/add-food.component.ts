@@ -3,7 +3,9 @@ import { MessageService } from 'primeng/api';
 import { FoodInfoInterface } from 'src/app/interfaces/food-info.interface';
 import { FoodType } from 'src/app/interfaces/food-type.interface';
 import { FoodInventoryService } from 'src/app/services/food.service';
+import { UploadService } from 'src/app/services/upload.service';
 import { DataComponent } from '../data/data.component';
+
 
 
 
@@ -22,8 +24,6 @@ export class AddFoodComponent implements OnInit {
 
   public selectedType: FoodType ;
 
-  public selectedId: number;
-
   public uploadedFiles: any[] = [];
 
   public selectedRecipe: string = "";
@@ -37,7 +37,9 @@ export class AddFoodComponent implements OnInit {
   constructor(
     private readonly messageService: MessageService,
     private readonly foodIntService: FoodInventoryService,
-    private readonly dataComponent: DataComponent
+    private readonly dataComponent: DataComponent,
+    private readonly uploadService: UploadService
+
     
     
     ) {   //it run first, when need to set up a value or run relevant codes
@@ -50,32 +52,39 @@ export class AddFoodComponent implements OnInit {
   }
 
   onUpload(event: any){
+    console.log("onUpload() START");
     for(let file of event.files) {
-      
+      console.log("upload file",file);
       this.uploadedFiles.push(file); 
+      
     }
-    this.messageService.add({severity: 'info', detail: ''});
+    this.messageService.add({severity: 'info', summary:"File Uploaded" ,detail: ''});
   }
 
 
 
   public onClickAction(event: Event){ 
 
-    var getObject: FoodInfoInterface = {type: this.selectedType.name, name: this.selectedName, other: this.selectedRecipe}; //hold infomation get from user input
+    var getObject: FoodInfoInterface = {type: this.selectedType.name, name: this.selectedName, img:this.uploadedFiles, other: this.selectedRecipe}; //hold infomation get from user input
     this.foodIntService.addNewFood(getObject); // call function addNewFood with input getObject to add new item food in food inventory service. 
-    this.dataComponent.updateListFood();
     this.foodIntService.setStorage();//
+    this.dataComponent.updateListFood();
     this.dataComponent.addFoodDisplay = false;
   } 
 
 
-
+  public uploadHandler(event: any) {
+    console.log(event.files);
+  }
 
 
   ngOnInit(): void {
     
    
   }
+
+  
+
 
 
 }

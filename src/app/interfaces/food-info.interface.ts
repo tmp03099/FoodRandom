@@ -1,7 +1,7 @@
 export interface FoodInfoInterface{
     type: string;
     name: string;
-    img?: string;
+    img?: any;
     other: string;
     
 }

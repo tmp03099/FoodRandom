@@ -19,7 +19,7 @@ export class ShowDetailFoodComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-   this.foodDetail = {type: "breakfast", name:"milk", other:"explain"}; //initialize set value 
+   this.foodDetail = {type: "breakfast", name:"milk", img: "img", other:"explain"}; //initialize set value 
   }
   
 

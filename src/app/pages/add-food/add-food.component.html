@@ -19,7 +19,10 @@
         </div>
     </div>
     <div class="flex">
-        <p-fileUpload name="demo[]" url="./upload.php" (onUpload)="onUpload($event)"
+        <p-fileUpload name="demo[]" 
+                      [customUpload]=true  
+                      (uploadHandler)="uploadHandler($event)"  
+                      (onUpload)="onUpload($event)"
         [multiple]=false accept="image/*" [maxFileSize]=1000000>
         <ng-template pTemplate="content">
             <ul *ngIf="uploadedFiles.length">
@@ -27,6 +30,7 @@
             </ul>
         </ng-template>
         </p-fileUpload>
+        <p-messages></p-messages>
     </div>
     <div class="flex">
         <button pButton pRipple type="button" label="Save" class="p-button-raised p-button-info" (click)="onClickAction($event)"></button>

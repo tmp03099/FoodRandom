@@ -95,7 +95,6 @@ export class FoodInventoryService{
     localStorage.setItem(this.keyFood,JSON.stringify(this.foodInventory));
     this.myItem = localStorage.getItem(this.keyFood)!;
     console.log(localStorage.getItem(this.keyFood));
-  
 
   }
 
@@ -106,6 +105,11 @@ export class FoodInventoryService{
     console.log("Take",data); //If return data that mean return an object;
     return localStorage.getItem(this.keyFood)!; //this is return a JSON string that
   }
+
+  
+
+
+
 
 } 
 

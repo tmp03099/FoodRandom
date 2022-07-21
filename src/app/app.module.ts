@@ -20,6 +20,8 @@ import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule } from '@angular/forms';
 import {FileUploadModule} from 'primeng/fileupload';
 import {HttpClientModule} from '@angular/common/http';
+import { MessageModule } from 'primeng/message';
+import { MessagesModule} from 'primeng/messages';
 import {ToastModule} from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { ShowDetailFoodComponent } from './pages/show-detail-food/show-detail-food.component';
@@ -51,7 +53,9 @@ import { ShowDetailFoodComponent } from './pages/show-detail-food/show-detail-fo
     FormsModule,
     FileUploadModule,
     HttpClientModule,
-    ToastModule
+    ToastModule,
+    MessageModule,
+    MessagesModule
   ],
   providers: [MessageService], // Need to add MessageService to this provider if use Message Service.
   bootstrap: [AppComponent]
